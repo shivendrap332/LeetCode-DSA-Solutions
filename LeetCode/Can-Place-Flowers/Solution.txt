@@ -1,0 +1,49 @@
+1class Solution {
+2public:
+3    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+4        int m = flowerbed.size();
+5
+6        int count1 = 0;
+7        for (int i = 0; i < m; i++) {
+8            if (flowerbed[i] == 1) {
+9                count1++;
+10            }
+11        }
+12
+13        if (m == 1) {
+14            if (flowerbed[0] == 0) flowerbed[0] = 1;
+15        } else {
+16            if (flowerbed[0] == 0 && flowerbed[1] == 0) {
+17                flowerbed[0] = 1;
+18            }
+19
+20            int i = 1;
+21            while (i < m - 1) {
+22                if (flowerbed[i] == 0 &&
+23                    flowerbed[i - 1] == 0 &&
+24                    flowerbed[i + 1] == 0) {
+25                    flowerbed[i] = 1;
+26                    i += 2;
+27                    continue;
+28                }
+29                i++;
+30            }
+31
+32            if (flowerbed[m - 1] == 0 && flowerbed[m - 2] == 0) {
+33                flowerbed[m - 1] = 1;
+34            }
+35        }
+36
+37        int count = 0;
+38        for (int i = 0; i < m; i++) {
+39            if (flowerbed[i] == 1) {
+40                count++;
+41            }
+42        }
+43
+44        if (count - count1 >= n) {
+45            return true;
+46        }
+47        return false;
+48    }
+49};
