@@ -1,0 +1,26 @@
+1class Solution {
+2public:
+3    bool detectCapitalUse(string word) {
+4
+5        int cnt = 0, cnt2 = 0;
+6
+7        for (int i = 0; i < word.size(); i++) {
+8            if (word[i] >= 'A' && word[i] <= 'Z') {
+9                cnt++;
+10            } else {
+11                cnt2++;
+12            }
+13        }
+14
+15        if (cnt == word.size())      // All uppercase
+16            return true;
+17
+18        if (cnt2 == word.size())     // All lowercase
+19            return true;
+20
+21        if (cnt == 1 && word[0] >= 'A' && word[0] <= 'Z') // Only first uppercase
+22            return true;
+23
+24        return false;
+25    }
+26};
