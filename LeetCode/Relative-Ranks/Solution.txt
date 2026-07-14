@@ -1,0 +1,59 @@
+1class Solution {
+2public:
+3    vector<string> findRelativeRanks(vector<int>& score) {
+4        vector<int> nums(score.size());
+5        vector<string> ans;
+6
+7            int n=score.size();
+8
+9            if(n<3){
+10                if(n==1){
+11                    ans.push_back("Gold Medal");
+12                    return ans;
+13                }else if(n==2){
+14                    if(score[0]>score[1]){
+15                         ans.push_back("Gold Medal");
+16                          ans.push_back("Silver Medal");
+17
+18                    return ans;
+19                    }else{
+20                         ans.push_back("Silver Medal");
+21                          ans.push_back("Gold Medal");
+22
+23                    return ans;
+24                    }
+25                }
+26            }
+27
+28
+29
+30        for (int i = 0; i < score.size(); i++) {
+31            nums[i] = score[i];
+32        }
+33
+34        sort(nums.begin(), nums.end());
+35
+36        int gold = nums[nums.size() - 1];
+37        int silver = nums[nums.size() - 2];
+38        int bronze = nums[nums.size() - 3];
+39
+40        for (int i = 0; i < score.size(); i++) {
+41            if (score[i] == gold) {
+42                ans.push_back("Gold Medal");
+43            } else if (score[i] == silver) {
+44                ans.push_back("Silver Medal");
+45            } else if (score[i] == bronze) {
+46                ans.push_back("Bronze Medal");
+47            } else {
+48                for (int j = 0; j < nums.size(); j++) {
+49                    if (score[i] == nums[j]) {
+50                        string s = to_string(nums.size()-j);
+51                        ans.push_back(s);
+52                    }
+53                }
+54            }
+55        }
+56
+57        return ans;
+58    }
+59};
