@@ -4,23 +4,23 @@
 4
 5        sort(ransomNote.begin(), ransomNote.end());
 6        sort(magazine.begin(), magazine.end());
-7
+7        int k = magazine.size();
 8        int j = 0;
 9        int i = 0;
-10
-11        while (i < ransomNote.length() && j < magazine.length()) {
-12            if (magazine[j] == ransomNote[i]) {
-13                i++;
-14                j++;
-15
-16                if (i == ransomNote.length()) {   // all ransom characters matched
-17                    return true;
-18                }
-19            } else {
-20                j++;    // change this from i++ to j++
-21            }
-22        }
-23
-24        return false;
-25    }
-26};
+10        while (j < magazine.length() && i<ransomNote.size()) {
+11            if (magazine[j] == ransomNote[i]) {
+12                i++;
+13                j++;
+14                
+15                if (i == ransomNote.size()) {
+16                    return true;
+17                }
+18            } else {
+19                j++;
+20            }
+21        }
+22    
+23    return false;
+24}
+25};
+26
