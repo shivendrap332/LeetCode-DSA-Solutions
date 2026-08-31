@@ -22,19 +22,17 @@
 22                indexmi = i;
 23            }
 24        }
-25
-26        // min and max both from left
-27        sum = min(sum, max(indexmi, indexmx) + 1);
-28
-29        // min and max both from right
-30        sum = min(sum, n - min(indexmi, indexmx));
-31
-32        // min from left, max from right
-33        sum = min(sum, indexmi + 1 + n - indexmx);
+25        int left=0;
+26        int right=0;
+27      if(indexmi<indexmx){
+28        left=indexmi;
+29        right=indexmx;
+30      }else{
+31        left=indexmx;
+32        right=indexmi;
+33      }
 34
-35        // max from left, min from right
-36        sum = min(sum, indexmx + 1 + n - indexmi);
-37
-38        return sum;
-39    }
-40};
+35        return min({left+1+n-right,right+1,n-left});
+36        
+37    }
+38};
